@@ -71,7 +71,7 @@ class AsgiHttpClient(HttpClient):
         self,
         graphiql: bool = True,
         allow_queries_via_get: bool = True,
-        result_override: ResultOverrideFunction = None,
+        result_override: Optional[ResultOverrideFunction] = None,
     ):
         view = GraphQLView(
             schema,

@@ -1,4 +1,4 @@
-from typing import Any
+from typing import Any, Optional
 
 from starlite import Provide, Request, Starlite
 from strawberry.starlite import make_graphql_controller
@@ -9,11 +9,11 @@ def custom_context_dependency() -> str:
     return "Hi!"
 
 
-async def get_root_value(request: Request = None):
+async def get_root_value(request: Optional[Request] = None):
     return request
 
 
-async def get_context(app_dependency: str, request: Request = None):
+async def get_context(app_dependency: str, request: Optional[Request] = None):
     return {
         "custom_value": app_dependency,
         "request": request,

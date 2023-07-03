@@ -45,7 +45,7 @@ class DjangoHttpClient(HttpClient):
         self,
         graphiql: bool = True,
         allow_queries_via_get: bool = True,
-        result_override: ResultOverrideFunction = None,
+        result_override: Optional[ResultOverrideFunction] = None,
     ):
         self.graphiql = graphiql
         self.allow_queries_via_get = allow_queries_via_get

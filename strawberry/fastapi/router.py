@@ -101,7 +101,7 @@ class GraphQLRouter(
             custom_context: Optional[CustomContext],
             background_tasks: BackgroundTasks,
             connection: HTTPConnection,
-            response: Response = None,  # type: ignore
+            response: Optional[Response] = None,  # type: ignore
         ) -> MergedContext:
             request = cast(Union[Request, WebSocket], connection)
             if isinstance(custom_context, BaseContext):

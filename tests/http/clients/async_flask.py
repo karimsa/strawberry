@@ -1,6 +1,6 @@
 from __future__ import annotations
 
-from typing import Any, Dict
+from typing import Any, Dict, Optional
 
 from flask import Flask
 from flask import Request as FlaskRequest
@@ -49,7 +49,7 @@ class AsyncFlaskHttpClient(FlaskHttpClient):
         self,
         graphiql: bool = True,
         allow_queries_via_get: bool = True,
-        result_override: ResultOverrideFunction = None,
+        result_override: Optional[ResultOverrideFunction] = None,
     ):
         self.app = Flask(__name__)
         self.app.debug = True

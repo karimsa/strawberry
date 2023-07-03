@@ -138,7 +138,7 @@ class ChannelsHttpClient(HttpClient):
         self,
         graphiql: bool = True,
         allow_queries_via_get: bool = True,
-        result_override: ResultOverrideFunction = None,
+        result_override: Optional[ResultOverrideFunction] = None,
     ):
         self.ws_app = DebuggableGraphQLTransportWSConsumer.as_asgi(
             schema=schema,
@@ -257,7 +257,7 @@ class SyncChannelsHttpClient(ChannelsHttpClient):
         self,
         graphiql: bool = True,
         allow_queries_via_get: bool = True,
-        result_override: ResultOverrideFunction = None,
+        result_override: Optional[ResultOverrideFunction] = None,
     ):
         self.http_app = DebuggableSyncGraphQLHTTPConsumer.as_asgi(
             schema=schema,

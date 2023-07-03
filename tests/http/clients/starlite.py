@@ -33,11 +33,11 @@ def custom_context_dependency() -> str:
     return "Hi!"
 
 
-async def starlite_get_context(request: Request = None):
+async def starlite_get_context(request: Optional[Request] = None):
     return get_context({"request": request})
 
 
-async def get_root_value(request: Request = None):
+async def get_root_value(request: Optional[Request] = None):
     return Query()
 
 
@@ -56,7 +56,7 @@ class StarliteHttpClient(HttpClient):
         self,
         graphiql: bool = True,
         allow_queries_via_get: bool = True,
-        result_override: ResultOverrideFunction = None,
+        result_override: Optional[ResultOverrideFunction] = None,
     ):
         self.create_app(
             graphiql=graphiql,
@@ -64,7 +64,7 @@ class StarliteHttpClient(HttpClient):
             result_override=result_override,
         )
 
-    def create_app(self, result_override: ResultOverrideFunction = None, **kwargs: Any):
+    def create_app(self, result_override: Optional[ResultOverrideFunction] = None, **kwargs: Any):
         BaseGraphQLController = make_graphql_controller(
             schema=schema,
             path="/graphql",

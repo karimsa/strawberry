@@ -45,8 +45,8 @@ def custom_context_dependency() -> str:
 
 async def fastapi_get_context(
     background_tasks: BackgroundTasks,
-    request: Request = None,  # type: ignore
-    ws: WebSocket = None,  # type: ignore
+    request: Optional[Request] = None,  # type: ignore
+    ws: Optional[WebSocket] = None,  # type: ignore
     custom_value: str = Depends(custom_context_dependency),
 ) -> Dict[str, object]:
     return get_context(
@@ -58,8 +58,8 @@ async def fastapi_get_context(
 
 
 async def get_root_value(
-    request: Request = None,  # type: ignore - FastAPI
-    ws: WebSocket = None,  # type: ignore - FastAPI
+    request: Optional[Request] = None,  # type: ignore - FastAPI
+    ws: Optional[WebSocket] = None,  # type: ignore - FastAPI
 ) -> Query:
     return Query()
 
@@ -83,7 +83,7 @@ class FastAPIHttpClient(HttpClient):
         self,
         graphiql: bool = True,
         allow_queries_via_get: bool = True,
-        result_override: ResultOverrideFunction = None,
+        result_override: Optional[ResultOverrideFunction] = None,
     ):
         self.app = FastAPI()
 

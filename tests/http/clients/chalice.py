@@ -47,7 +47,7 @@ class ChaliceHttpClient(HttpClient):
         self,
         graphiql: bool = True,
         allow_queries_via_get: bool = True,
-        result_override: ResultOverrideFunction = None,
+        result_override: Optional[ResultOverrideFunction] = None,
     ):
         self.app = Chalice(app_name="TheStackBadger")
 

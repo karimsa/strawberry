@@ -1,4 +1,4 @@
-from typing import Any, Dict, Union
+from typing import Any, Dict, Optional, Union
 
 from fastapi import BackgroundTasks, Depends, FastAPI, Request, WebSocket
 from strawberry.fastapi import GraphQLRouter
@@ -11,8 +11,8 @@ def custom_context_dependency() -> str:
 
 async def get_context(
     background_tasks: BackgroundTasks,
-    request: Request = None,
-    ws: WebSocket = None,
+    request: Optional[Request] = None,
+    ws: Optional[WebSocket] = None,
     custom_value=Depends(custom_context_dependency),
 ) -> Dict[str, Any]:
     return {
@@ -23,7 +23,7 @@ async def get_context(
 
 
 async def get_root_value(
-    request: Request = None, ws: WebSocket = None
+    request: Optional[Request] = None, ws: Optional[WebSocket] = None
 ) -> Union[Request, WebSocket]:
     return request or ws
 

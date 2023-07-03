@@ -86,7 +86,7 @@ schema = strawberry.Schema(Query)
 
 
 def run_query(
-    query: str, max_depth: int, should_ignore: ShouldIgnoreType = None
+    query: str, max_depth: int, should_ignore: Optional[ShouldIgnoreType] = None
 ) -> Tuple[List[GraphQLError], Union[Dict[str, int], None]]:
     document = parse(query)
 

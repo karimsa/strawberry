@@ -50,7 +50,7 @@ class SanicHttpClient(HttpClient):
         self,
         graphiql: bool = True,
         allow_queries_via_get: bool = True,
-        result_override: ResultOverrideFunction = None,
+        result_override: Optional[ResultOverrideFunction] = None,
     ):
         self.app = Sanic(
             f"test_{int(randint(0, 1000))}",  # noqa: S311
